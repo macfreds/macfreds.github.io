@@ -6,29 +6,28 @@
     
 
     
-    <title>ADB remote debug | Macfred&#39;s page</title>
+    <title>ADB remote debug | Macfred&#39;s Pages</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="Android,Debug" />
     
-    <meta name="description" content="Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator device might be helpful, how">
+    <meta name="description" content="Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator might be helpful, however, w">
+<meta name="keywords" content="Android,Debug">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ADB remote debug">
-<meta property="og:url" content="http://yoursite.com/2019/03/30/ADB-remote-debug/index.html">
-<meta property="og:site_name" content="Macfred&#39;s page">
-<meta property="og:description" content="Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator device might be helpful, how">
-<meta property="og:locale" content="default">
+<meta property="og:url" content="https://macfreds.github.io/2019/03/30/ADB-remote-debug/index.html">
+<meta property="og:site_name" content="Macfred&#39;s Pages">
+<meta property="og:description" content="Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator might be helpful, however, w">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://i.loli.net/2019/03/31/5c9fb5ff46c7e.png">
-<meta property="og:updated_time" content="2019-03-30T19:00:05.046Z">
+<meta property="og:updated_time" content="2019-03-31T06:41:03.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ADB remote debug">
-<meta name="twitter:description" content="Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator device might be helpful, how">
+<meta name="twitter:description" content="Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator might be helpful, however, w">
 <meta name="twitter:image" content="https://i.loli.net/2019/03/31/5c9fb5ff46c7e.png">
     
 
-    
-        <link rel="alternate" href="/" title="Macfred&#39;s page" type="application/atom+xml" />
     
 
     
@@ -48,6 +47,18 @@
         <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
     
     
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-137357724-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
     
 
 
@@ -64,6 +75,10 @@
                         <a href="/" class="logo"></a>
                     </h1>
                     
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">...</p>
+                        </h2>
+                    
                 </div>
                 <div id="header-inner" class="nav-container">
                     <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
@@ -74,7 +89,7 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tech/Android/">Android</a></li></ul></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
@@ -133,7 +148,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    uncategorized
+    <a class="page-title-link" href="/categories/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Tech/Android/">Android</a>
     </h1>
 </div>
 
@@ -163,11 +178,16 @@
 		
 
                 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Debug/">Debug</a>
+    </div>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p> Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator device might be helpful, however, we just need to debug on a specific device ocationaly. Here comes the solution.</p>
+            <p> Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator might be helpful, however, we just need to debug on a specific device ocationaly. Here comes the solution.</p>
 <h2 id="Preparations"><a href="#Preparations" class="headerlink" title="Preparations"></a>Preparations</h2><p>ADB is implemented on a classic Client-Server structure, in which server side interact with android device on usb link, and is involked by client through port <strong>5037</strong>. The only step is just simply connect adb client running on remote machine with adb server on local machine using <strong>port forwarding</strong>.<br>You need to install Android SDK on both local and remote machines, and add {ANDROID_SDK}/platform_tools folder as environment variable.</p>
 <h3 id="ADB-server-side"><a href="#ADB-server-side" class="headerlink" title="ADB server side"></a>ADB server side</h3><p>In our solution, adb server runs on local machine. Except adb server, SSH server are needed as well which provides port forwarding funcionality. In our case we use <strong><a href="https://www.bitvise.com/ssh-server" title="Bitwise" target="_blank" rel="noopener">Bitwise SSH server</a></strong> on windows platform, you might choose your own favorable implementaton on other platform.</p>
 <p><img src="https://i.loli.net/2019/03/31/5c9fb5ff46c7e.png" alt="Bitwise server config step 1"><br><img src="https://i.loli.net/2019/03/31/5c9fb6c583391.png" alt="Bitwise server config step 2"><br><img src="https://i.loli.net/2019/03/31/5c9fb6c583391.png" alt="Bitwise server config step 3"><br><img src="https://i.loli.net/2019/03/31/5c9fb79312693.png" alt="Bitwise server config step 4"><br><img src="https://i.loli.net/2019/03/31/5c9fb8adee760.png" alt="Bitwise server config step 5"><br><img src="https://i.loli.net/2019/03/31/5c9fb96f07133.png" alt="Bitwise server config step 6"></p>
@@ -197,7 +217,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2019/03/30/ADB-remote-debug/" data-id="cjtwevtq40000kpizzxxgzyoz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://macfreds.github.io/2019/03/30/ADB-remote-debug/" data-id="cjtwkq0pw00016qizeqtvuumm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -268,15 +288,15 @@
             "name": "macfred"
         },
         "headline": "ADB remote debug",
-        "image": "http://yoursite.comhttps://i.loli.net/2019/03/31/5c9fb5ff46c7e.png",
-        "keywords": "",
-        "genre": "",
+        "image": "https://macfreds.github.iohttps://i.loli.net/2019/03/31/5c9fb5ff46c7e.png",
+        "keywords": "Android Debug",
+        "genre": "Tech Android",
         "datePublished": "2019-03-30",
         "dateCreated": "2019-03-30",
         "dateModified": "2019-03-31",
-        "url": "http://yoursite.com/2019/03/30/ADB-remote-debug/",
-        "description": " Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator device might be helpful, how"
-        "wordCount": 565
+        "url": "https://macfreds.github.io/2019/03/30/ADB-remote-debug/",
+        "description": " Sometimes we may need to work on a remote machine, edit or debug .etc, in which case adb seems not working at all, because it must be running on a local machine. Emulator might be helpful, however, w"
+        "wordCount": 564
     }
 </script>
 
@@ -304,48 +324,8 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-twitter"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-facebook"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-google-plus"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="github" href="https://github.com/macfreds" target="_blank" rel="noopener">
                         <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-weibo"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-rss"></i>
                     </a>
                 </li>
                 
@@ -381,7 +361,7 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Tech/Android/">Android</a></p>
                             <p class="item-title"><a href="/2019/03/30/ADB-remote-debug/" class="title">ADB remote debug</a></p>
                             <p class="item-date"><time datetime="2019-03-30T15:45:30.000Z" itemprop="datePublished">2019-03-30</time></p>
                         </div>
@@ -393,6 +373,13 @@
 
             
                 
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/Android/">Android</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
 
             
                 
@@ -406,9 +393,23 @@
 
             
                 
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debug/">Debug</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
 
             
                 
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a>
+        </div>
+    </div>
+
 
             
                 
@@ -458,10 +459,10 @@
         
     
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
+    var disqus_shortname = 'macfreds-pages';
     
     
-    var disqus_url = 'http://yoursite.com/2019/03/30/ADB-remote-debug/';
+    var disqus_url = 'https://macfreds.github.io/2019/03/30/ADB-remote-debug/';
     
     (function() {
     var dsq = document.createElement('script');
